@@ -9,14 +9,16 @@
     <!-- ################################################################## -->
 
     <sch:pattern name="Co-Occurrence Constraints">
-        <sch:rule context="mets:*[@MDTYPE = 'OTHER']">
-            <sch:assert test="normalize-space(@OTHERMDTYPE)">If the value of a MDTYPE attribute is
+        <sch:rule id="MDTYPE-OTHER" abstract="true">
+            <sch:assert test="(matches(string(@MDTYPE), 'OTHER')) and (normalize-space(@OTHERMDTYPE))">If the value of a MDTYPE attribute is
                 "OTHER', then the OTHERMDTYPE attribute must be used </sch:assert>
         </sch:rule>
-        <sch:rule context="mets:*[@LOCTYPE = 'OTHER']">
-            <sch:assert test="normalize-space(@OTHERLOCTYPE)">If the value of a LOCTYPE attribute is
+        <sch:rule id="LOCTYPE-OTHER" abstract="true">
+            <sch:assert test="(matches(string(@LOCTYPE), 'OTHER')) and (normalize-space(@OTHERLOCTYPE))">If the value of a LOCTYPE attribute is
                 "OTHER", then the OTHERLOCTYPE attribute must be used </sch:assert>
         </sch:rule>
+    </sch:pattern>
+    <sch:pattern name="DMDID-ID+IDREF">
         <sch:rule context="mets:*[@DMDID]">
             <!-- see Conal Tuohy posting  to Schematron Love In mailing list Sep 5, 2006 2:45 am -->
             <!-- 
@@ -34,6 +36,18 @@
                 diagnostics="DMDID-en"/>
         </sch:rule>
     </sch:pattern>
+    <sch:pattern name="mdWrap">
+        <sch:rule context="mets:mdWrap">
+            <sch:extends rule="MDTYPE-OTHER"/>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern name="mdRef">
+    <sch:rule context="mets:mdRef">
+            <sch:extends rule="LOCTYPE-OTHER"/>
+            <sch:extends rule="MDTYPE-OTHER"/>
+        </sch:rule>
+    </sch:pattern>
+    
     <!-- to provide an example of multi-lingual error messages -->
     <sch:diagnostics>
         <sch:diagnostic id="DMDID-en">An IDREF in a DMDID attribute must be the value of a
