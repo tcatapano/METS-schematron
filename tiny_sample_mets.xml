@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?oxygen SCHSchema="../METS/mets-general-rules-ISO.sch"?>
+<?oxygen SCHSchema="mets_general_rules-ISO.sch"?>
 <mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mets="http://www.loc.gov/METS/"
     xmlns:mods="http://www.loc.gov/mods/v3"    
@@ -17,10 +17,10 @@
         </mets:mdWrap>
     </mets:dmdSec>
     <mets:dmdSec ID="dmd3">
-        <mets:mdRef LOCTYPE="OTHER" MDTYPE="OTHER" OTHERMDTYPE="test"/>
+        <mets:mdRef LOCTYPE="OTHER" MDTYPE="OTHER" OTHERMDTYPE="" OTHERLOCTYPE=""/>
     </mets:dmdSec>
     <mets:dmdSec ID="dmd4">
-        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="test">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="">
             <mets:xmlData>
                 <mods:mods>
                     <mods:titleInfo>
@@ -31,7 +31,7 @@
         </mets:mdWrap>
     </mets:dmdSec>
     <mets:structMap>
-        <mets:div DMDID="dmd2 dmd3">
+        <mets:div DMDID="dmd2 dmd3 dmd1">
         <mets:div DMDID="dmd2 dmd4"/>
         </mets:div>
     </mets:structMap>
